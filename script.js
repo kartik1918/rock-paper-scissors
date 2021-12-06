@@ -11,32 +11,24 @@ function computerPlay() {
 
 let computerSelection = computerPlay();
 
-function game() {
-    for (let i = 0; i < 5; i++) {
-        let str = prompt('Enter your Choice: Rock, Paper, Scissors');
+let rockBtn = document.querySelector('#rock-btn');
+rockBtn.addEventListener('click', function() {
+    console.log( playRound('rock', computerPlay()) );
+})
 
-        let playerSelection = str;
-    
-        if (playerSelection === '' || playerSelection != str) {
-            alert("Please enter a valid input");
-        }
-    
-        playerSelection = playerSelection.toLowerCase();
+let paperBtn = document.querySelector('#paper-btn');
+paperBtn.addEventListener('click', function() {
+    console.log( playRound('paper', computerPlay()) );
+})
 
-        playRound(playerSelection, computerPlay());
-    }
-
-    if (playerScore > compScore) {
-        console.log("You Win the Game");
-    } else {
-        console.log("You Lose the Game");
-    }
-}
-
-let playerScore = 0; 
-let compScore = 0;
+let scissorsBtn = document.querySelector('#scissors-btn');
+scissorsBtn.addEventListener('click', function() {
+    console.log( playRound('scissors', computerPlay()) );
+})
 
 function playRound(playerSelection, computerSelection) {
+    let playerScore = 0; // check scope access fpr these variables
+    let compScore = 0;
     while (playerSelection == 'rock') {
         if (computerSelection == 'Rock') {
             return ("It's a Tie");
